@@ -16,7 +16,7 @@ void Patient::displayInfo() const {
 }
 
 // Implementation of getter and setter methods
-int Patient:: getId() const {
+int Patient::getId() const {
     return id;
 }
 
@@ -24,11 +24,11 @@ string Patient::getName() const {
     return name;
 }
 
-void Patient:: setName (string newName) {
+void Patient::setName (string newName) {
     name = newName;
 }
 
-string Patient:: setStatus(string newStatus) {
+string Patient::setStatus(string newStatus) {
     status = newStatus;
     return status; //?
 }
