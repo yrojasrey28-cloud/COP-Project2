@@ -1,5 +1,5 @@
 /*
-Class NumberInWaitingRoom inherits Class WaitingRoom.
+Class NumberInWaitingRoom inherits from Class WaitingRoom.
 It adds functionality to manage the capacity of the waiting room with methods 
 to get the current capacity, check the current capacity, check if the waiting room is full, 
 and remove patients from the back of Deque if the waiting room exceeds its capacity.
