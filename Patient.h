@@ -31,5 +31,3 @@ class Patient {
 };
 
 #endif 
-
-
