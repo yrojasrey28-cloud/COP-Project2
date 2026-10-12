@@ -1,7 +1,7 @@
 /* Patient.cpp implements the methods for the Patient class */
 #include "Patient.h"
 #include <iostream>
-using namespace std;\
+using namespace std;
 
 // Constructor implementation
 Patient::Patient(int id, string name, int age, string status) 
