@@ -33,5 +33,7 @@ string Patient::setStatus(string newStatus) {
     return status; //?
 }
 
+Patient::~Patient() = default;
+
 
 
