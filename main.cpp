@@ -40,6 +40,12 @@ int main() {
                     cout<<"Enter patient ID: ";
                     cin >> id;
 
+                    if(waitingRoom.hasId(id)){
+                        cout << "Error: a patient with ID " << id << " is already in the waiting room." << endl;
+                        choiceP = 'y';
+                        continue;
+                    }
+
                     cout<< "Enter patient name: ";
                     getline(cin>> ws, name);
 
