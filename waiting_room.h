@@ -13,6 +13,7 @@ public:
     void addBack(const Patient& p);    // non-urgent patient
     bool removeFront();                // treated, leaves hospital
     bool removeBack();                 // goes to another hospital
+    bool hasId(int id) const;
     void displayAll() const;
     std::size_t size() const;
 };
