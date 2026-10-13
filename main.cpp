@@ -33,7 +33,7 @@ int main() {
                 char choiceP;
                 int id, age;
                 string name;
-                char urgency;
+                string urgency;
 
                 do{
                     cout << endl;
@@ -46,27 +46,26 @@ int main() {
                     cout<< "Enter patient age: ";
                     cin>>age;
 
-                    cout<< "Does this patient need to be admitted immediately? (y/n): ";
+                    cout<< "Does this patient need to be admitted immediately? (urgent/non-urgent): ";
                     cin>> urgency;
 
-                    if(urgency != 'y' && urgency != 'Y' && urgency != 'n' && urgency != 'N'){
+                    if(urgency != "urgent" && urgency != "non-urgent"){
                         cout << "Invalid urgency choice. Patient is not added.";
 
                         break;
                     }
 
 
-                    Patient p(id, name, age, "Waiting");
+                    Patient p(id, name, age, urgency);
 
-
-                    if (urgency == 'y' || urgency == 'Y'){
+                    if(urgency == "urgent"){
                         waitingRoom.addFront(p);
                     }
 
-                    if (urgency == 'n' || urgency == 'N'){
+                    if(urgency == "non-urgent"){
                         waitingRoom.addBack(p);
                     }
-
+                    
                     cout << endl;
                     cout<<"Are there more patients to be admitted? (y/n): ";
                     cin>> choiceP;
