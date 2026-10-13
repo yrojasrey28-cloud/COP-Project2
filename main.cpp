@@ -3,15 +3,20 @@
 #include "Patient.h"
 #include "NumberInWaitingRoom.h"
 
+/*In main.cpp user can create and manipulate the waiting room using the methods from waiting_room and NumberInWaitingRoom*/
+
+
 using namespace std;
 
 int main() {
 
+    //Creates the waiting room with a max capacity of 10 patients
     NumberInWaitingRoom waitingRoom(10);
 
     int choice;
     cout << "Welcome to the Patient Management System!" << endl <<endl;
 
+    //Displays the menu until the user chooses to exit
     do{
         cout <<endl;
         cout<< "-------- MAIN MENU --------" << endl;
@@ -20,10 +25,12 @@ int main() {
         cout<< "3. Display all patients" << endl;
         cout<< "4. Exit" << endl;
 
+        //Get user's menu selection (HAS TO BE A NUMBER that matches the menu list)
         cout<< "Enter the number of your choice: ";
         cin >> choice;
         cout << endl;
 
+        //Preforms the action based on the user choice
         switch(choice){
 
 
@@ -35,11 +42,14 @@ int main() {
                 string name;
                 string urgency;
 
+                //Gets the patient details and user can add patients continuously as long as the user enters 'y' or 'Y'
                 do{
+
                     cout << endl;
                     cout<<"Enter patient ID: ";
                     cin >> id;
 
+                    //If the patient id is already in the system then a new patient cant be created
                     if(waitingRoom.hasId(id)){
                         cout << "Error: a patient with ID " << id << " is already in the waiting room." << endl;
                         choiceP = 'y';
@@ -55,6 +65,7 @@ int main() {
                     cout<< "Does this patient need to be admitted immediately? (urgent/non-urgent): ";
                     cin>> urgency;
 
+                    //Makes sure that the correct urgency value is entered by user
                     if(urgency != "urgent" && urgency != "non-urgent"){
                         cout << "Invalid urgency choice. Patient is not added.";
 
@@ -62,20 +73,25 @@ int main() {
                     }
 
 
+                    //creates patient
                     Patient p(id, name, age, urgency);
 
+                    //Patient is added to front of waiting room if the staus is urgent
                     if(urgency == "urgent"){
                         waitingRoom.addFront(p);
                     }
 
+                    //Patient is added to back of waiting room if the status is not urgent
                     if(urgency == "non-urgent"){
                         waitingRoom.addBack(p);
                     }
                     
                     cout << endl;
+                    //Asks user if they want to admit another patient
                     cout<<"Are there more patients to be admitted? (y/n): ";
                     cin>> choiceP;
 
+                    //Validates the user's choice
                     if(choiceP != 'y' && choiceP != 'Y' && choiceP != 'n' && choiceP != 'N'){
                         cout << "Invalid choice. No more patients are added" << endl;
 
@@ -87,8 +103,10 @@ int main() {
 
                 cout << endl;
 
+                //Checks if the waiting room exceeds its max capacity and removes the last patient if required
                 waitingRoom.checkAndRemoveIfOverCapacity();
 
+                //Displays the capacity of waiting room
                 waitingRoom.checkCapacity();
 
                 cout << endl;
@@ -106,17 +124,23 @@ int main() {
                 cout <<"Enter the number of your action: ";
                 cin >> remove;
 
+
+                //Checks that the user selected the valid choices available
                 if (remove != 1 && remove != 2){
                     cout << "Invalid choice. No patients have been removed"<< endl << endl;
                     break;
                 }
 
+
+                //Treat the patient at front of waiting room and removes them
                 if(remove == 1){
                     if(!waitingRoom.removeFront()){
                         cout<< "Waiting room is empty" << endl;
                     }
                 }
 
+
+                //Transfer the patient at the back of waiting room  and removes them
                 if(remove == 2){
                     if(!waitingRoom.removeBack()){
                         cout<< "Waiting room is empty" << endl;
@@ -142,6 +166,7 @@ int main() {
                 break;
             }
 
+            //If user enters a value that its not part of the menu this will handle those situations
             default: {
                 cout << "Invalid choice. Please try again" << endl;
             }
