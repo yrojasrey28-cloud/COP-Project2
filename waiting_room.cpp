@@ -5,6 +5,15 @@ using namespace std;
 void WaitingRoom::addFront(const Patient& p) { patients.push_front(p); }
 void WaitingRoom::addBack(const Patient& p)  { patients.push_back(p); }
 
+bool WaitingRoom::hasId(int id) const {
+    for (const auto& p : patients) {
+        if (p.getId() == id) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool WaitingRoom::removeFront() {
     if (patients.empty()) return false;
     cout << patients.front().getName() << " was treated and left.\n";
