@@ -1,7 +1,7 @@
 #ifndef WAITING_ROOM_H
 #define WAITING_ROOM_H
 
-#include "patient.h"
+#include "Patient.h"
 #include <deque>
 
 class WaitingRoom {
